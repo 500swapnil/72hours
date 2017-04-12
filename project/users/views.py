@@ -7,3 +7,6 @@ from . import models
 
 def user_profile(request):
     return render(request, 'profile.html')
+
+def signup(request):
+	return render(request, 'login.html')
