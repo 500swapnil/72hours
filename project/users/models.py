@@ -6,9 +6,15 @@ from django.db import models
 class User (models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=80)
-    number = models.IntegerField()
     email = models.CharField(max_length=255)
-    address = models.CharField(max_length=255)
+    password = models.CharField(max_length=255)
+    address = models.CharField(max_length=255, default=None, null=True)
+    number = models.IntegerField(default=None, null=True)
+
+    @classmethod
+    def create(cls, name, email, password, address=None, number=None):
+        user = cls(name=name, number=number, email=email, address=address, password=password)
+        return user
 
 class Item (models.Model):
     id = models.AutoField(primary_key=True)
