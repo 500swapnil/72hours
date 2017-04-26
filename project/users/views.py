@@ -28,6 +28,9 @@ def category(request):
 
 def contact(request):
 	return render(request, 'contact-us.html')
+
+def sell(request):
+	return render(request, 'sell.html')
 # def login(request):
 # 	if request.method == 'POST':
 # 		form = UserForm(request.POST)
