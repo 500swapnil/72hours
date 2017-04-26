@@ -30,7 +30,8 @@ class Item (models.Model):
     @classmethod
     def create(cls, title, date, seller_id, description, price, image, quantity, category):
         item = cls(title=title, date=date, seller_id=seller_id, description=description, price=price, image=image, quantity=quantity, category=category)
-
+        return item
+        
 class Transaction (models.Model) :
     PAYMENT_MODES = (
         ('COD', 'Cash on delivery'),

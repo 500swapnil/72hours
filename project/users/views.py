@@ -5,7 +5,7 @@ from . import models
 from .forms import UserForm
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from models import User
+from models import User, Item
 
 def user_profile(request):
     return render(request, 'profile.html')
@@ -20,7 +20,7 @@ def thanks(request):
         if form.is_valid():
             temp = User.create(form.cleaned_data.get('name'), form.cleaned_data.get('email'), form.cleaned_data.get('password'))
             temp.save()
-        items = User.objects.all()[0:6]
+        items = Item.objects.all()[0:6]
     return render(request, 'index.html', {'items': items})
 
 def category(request):
