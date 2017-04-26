@@ -23,8 +23,11 @@ def thanks(request):
         items = Item.objects.all()[0:6]
     return render(request, 'index.html', {'items': items})
 
-def category(request):
-	return render(request, 'category.html')
+def category(request, category_name=None):
+    if category_name != 'index' and category_name:
+    	return render(request, category_name)
+    else:
+    	return render(request, 'category.html')
 
 def contact(request):
 	return render(request, 'contact-us.html')
