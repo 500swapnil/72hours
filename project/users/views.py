@@ -20,7 +20,7 @@ def thanks(request):
         if form.is_valid():
             temp = User.create(form.cleaned_data.get('name'), form.cleaned_data.get('email'), form.cleaned_data.get('password'))
             temp.save()
-    return render(request, 'home.html')
+    return render(request, 'index.html')
 
 # def login(request):
 # 	if request.method == 'POST':
