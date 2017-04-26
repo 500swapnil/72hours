@@ -20,7 +20,11 @@ def thanks(request):
         if form.is_valid():
             temp = User.create(form.cleaned_data.get('name'), form.cleaned_data.get('email'), form.cleaned_data.get('password'))
             temp.save()
-    return render(request, 'index.html')
+        items = User.objects.all()[0:6]
+    return render(request, 'index.html', {'items': items})
+
+def category(request):
+	return render(request, 'category.html')
 
 # def login(request):
 # 	if request.method == 'POST':
