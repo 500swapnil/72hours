@@ -26,6 +26,8 @@ def thanks(request):
 def category(request):
 	return render(request, 'category.html')
 
+def contact(request):
+	return render(request, 'contact-us.html')
 # def login(request):
 # 	if request.method == 'POST':
 # 		form = UserForm(request.POST)
