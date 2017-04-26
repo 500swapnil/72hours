@@ -25,6 +25,11 @@ class Item (models.Model):
     price = models.FloatField()
     image = models.ImageField(max_length=255)
     quantity = models.IntegerField()
+    category = models.CharField(max_length=100)
+
+    @classmethod
+    def create(cls, title, date, seller_id, description, price, image, quantity, category):
+        item = cls(title=title, date=date, seller_id=seller_id, description=description, price=price, image=image, quantity=quantity, category=category)
 
 class Transaction (models.Model) :
     PAYMENT_MODES = (

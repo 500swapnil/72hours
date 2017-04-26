@@ -20,4 +20,10 @@ def thanks(request):
         if form.is_valid():
             temp = User.create(form.cleaned_data.get('name'), form.cleaned_data.get('email'), form.cleaned_data.get('password'))
             temp.save()
-    return render(request, 'profile.html')
+    return render(request, 'home.html')
+
+# def login(request):
+# 	if request.method == 'POST':
+# 		form = UserForm(request.POST)
+# 		if form.is_valid():
+# 			temp = User.objects.filter(name=form.cleaned_data.get('name'))
