@@ -27,9 +27,10 @@ def thanks(request):
 
 def category(request, category_name=None):
     if category_name != 'index' and category_name:
-    	return render(request, category_name)
-    else:
-    	return render(request, 'category.html')
+    	category.items = Item.objects.get(category = category_name)
+        category.name = category_name
+
+        return render(request, 'category.html', {'items':category.items})
 
 def item(request, item_id):
     Items = Item.objects.all()
@@ -44,8 +45,7 @@ def contact(request):
     return render(request, 'contact-us.html')
 
 def sell(request):
-    form = SellerForm()
-    return render(request, 'sell.html', {'form':form})
+    return render(request, 'sell.html')
 # def login(request):
 # 	if request.method == 'POST':
 # 		form = UserForm(request.POST)
@@ -54,8 +54,9 @@ def sell(request):
 
 def selldone(request):
     if request.method == 'POST':
-        form = SellerForm(request.POST)
+        form = SellerForm(request.POST, request.FILES)
         temp = User.create("Mridul", "msdvhosd", "saiuga")
+
         temp.save()
         if form.is_valid():
             temp2 = Item.create(form.cleaned_data.get('name'),datetime.datetime.now,temp,form.cleaned_data.get('description'), form.cleaned_data.get('price'),form.cleaned_data.get('image'),form.cleaned_data.get('quantity'),form.cleaned_data.get('category'))
