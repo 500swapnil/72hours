@@ -1,78 +1,76 @@
-{% extends "base.html" %}
-{% load static %}
-{% block main %}
-
-    <div id="contact-page" class="container">
-        <div class="bg">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h2 class="title text-center">POST ITEM TO SELL</h2>
-                    <div id="gmap" class="contact-map" style="background-image:url('http://teja1.kuikr.com/public/images/dist/sitemap_bckgrd.jpg'); height:150px;">
-                    </div>
+{% extends "base.html" %} {% load static %} {% block main %}
+<script src="{% static 'js/sellregex.js' %}"></script>
+<div id="contact-page" class="container">
+    <div class="bg">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="title text-center">POST ITEM TO SELL</h2>
+                <div id="gmap" class="contact-map" style="background-image:url('http://teja1.kuikr.com/public/images/dist/sitemap_bckgrd.jpg'); height:150px;">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="contact-form">
-                        <!--<h2 class="title text-center">Get In Touch</h2>-->
-                        <div class="status alert alert-success" style="display: none"></div>
-                        <form id="main-contact-form" class="contact-form row" name="contact-form" method="POST" action="mailto:vivek.kaushal@outlook.com">
-                            <!--action="/selldone" >-->
-                            {% csrf_token %}
-                            <!-- {{form.as_p}} -->
-                            <div class="form-group col-md-4">
-                                <label for="name"><font size="+2" face="roboto" color="#8c8c88">Enter Product Name:</font></label>
-                            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="contact-form">
+                    <!--<h2 class="title text-center">Get In Touch</h2>-->
+                    <div class="status alert alert-success" style="display: none"></div>
 
-                            <div class="form-group col-md-8">
-                                <input type="text" id="title" name="title" class="form-control" required="required" placeholder="Name">
-                            </div>
-                            <br />
+                    <form id="main-contact-form" class="contact-form row" name="contact-form" onsubmit="regex()" action="#" method="POST">
+                        {% csrf_token %}
+                        <!-- {{form.as_p}} -->
+                        <div class="form-group col-md-4">
+                            <label for="name"><font size="+2" face="roboto" color="#8c8c88">Enter Product Name:</font></label>
+                        </div>
 
-                            <div class="form-group col-md-4">
-                                <label for="price"><font size="+2" face="roboto" color="#8c8c88">Price:</font></label>
-                            </div>
+                        <div class="form-group col-md-8">
+                            <input type="text" id="title" name="title" class="form-control" required="required" placeholder="Name">
+                        </div>
+                        <br />
 
-                            <div class="form-group col-md-8">
-                                <input type="text" id="price" name="price" class="form-control" required="required" placeholder="Enter Price (In Rupees)">
-                            </div>
+                        <div class="form-group col-md-4">
+                            <label for="price"><font size="+2" face="roboto" color="#8c8c88">Price:</font></label>
+                        </div>
 
-                            <br />
-                            <div class="form-group col-md-4">
-                                <label for="quantity"><font size="+2" face="roboto" color="#8c8c88"> Quantity:</font></label>
-                            </div>
+                        <div class="form-group col-md-8">
+                            <input type="text" id="price" name="price" class="form-control" required="required" placeholder="Enter Price (In Rupees)">
+                        </div>
 
-                            <div class="form-group col-md-8">
-                                <input type="text" id="quantity" name="quantity" class="form-control" required="required" placeholder="Enter Quantity">
-                            </div>
+                        <br />
+                        <div class="form-group col-md-4">
+                            <label for="quantity"><font size="+2" face="roboto" color="#8c8c88"> Quantity:</font></label>
+                        </div>
 
-                            <br />
-                            <div class="form-group col-md-4">
-                                <label for="image"><font size="+2" face="roboto" color="#8c8c88">Product Image:</font></label>
-                            </div>
+                        <div class="form-group col-md-8">
+                            <input type="text" id="quantity" name="quantity" class="form-control" required="required" placeholder="Enter Quantity">
+                        </div>
 
-                            <div class="form-group col-md-8">
-                                <input type="file" id="image" name="image" class="form-control" required="required" placeholder="Choose Image to Upload">
+                        <br />
+                        <div class="form-group col-md-4">
+                            <label for="image"><font size="+2" face="roboto" color="#8c8c88">Product Image:</font></label>
+                        </div>
 
-                            </div>
+                        <div class="form-group col-md-8">
+                            <input type="file" id="image" name="image" class="form-control" required="required" placeholder="Choose Image to Upload">
 
-                            <br />
+                        </div>
+
+                        <br />
 
 
-                            <div class="form-group col-md-4">
-                                <label for="message"><font size="+2" face="roboto" color="#8c8c88"> Product Description:</font></label>
-                            </div>
+                        <div class="form-group col-md-4">
+                            <label for="message"><font size="+2" face="roboto" color="#8c8c88"> Product Description:</font></label>
+                        </div>
 
-                            <div class="form-group col-md-8">
-                                <textarea name="description" id="description" required="required" class="form-control" rows="8" placeholder="Enter Product Description"></textarea>
-                            </div>
-                            <br />
-                            <div class="form-group col-md-4">
-                                <label for="category"><font size="+2" face="roboto" color="#8c8c88">Choose Category:</font></label>
-                            </div>
+                        <div class="form-group col-md-8">
+                            <textarea name="description" id="description" required="required" class="form-control" rows="8" placeholder="Enter Product Description"></textarea>
+                        </div>
+                        <br />
+                        <div class="form-group col-md-4">
+                            <label for="category"><font size="+2" face="roboto" color="#8c8c88">Choose Category:</font></label>
+                        </div>
 
-                            <div class="form-group col-md-8">
-                                <select id="category" name="category" required>
+                        <div class="form-group col-md-8">
+                            <select id="category" name="category" required>
                                     <option id= "vehicles"> Cars and Bikes </option>
                                     <option id= "furniture"> Home and Decoration </option>
                                     <option id= "moblies"> Mobiles and Tablets</option>
@@ -83,18 +81,19 @@
                                     <option id= "laptop"> Laptops and PCs</option>
                                     <option id= "toys"> Toys and Kids' Accessories </option>
                                 </select>
-                            </div>
+                        </div>
 
-                            <br />
-                            <div class="form-group col-md-12 ">
-                                <button type="submit " name="submit" class="btn btn-primary pull-right" value="submit">Submit</button>
-                            </div>
-                        </form>
-                    </div>
+                        <br />
+                        <div class="form-group col-md-12 ">
+                            <button type="submit" name="submit" class="btn btn-primary pull-right" value="submit">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <!--/#contact-page-->
+</div>
 
-    {% endblock %}
+<!--/#contact-page-->
+
+{% endblock %}
