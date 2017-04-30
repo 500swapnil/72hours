@@ -19,7 +19,7 @@ class User (models.Model):
 class Item (models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255)
-    date = models.DateField()
+    date = models.DateField(auto_now=True)
     seller_id = models.ForeignKey(User)
     description = models.TextField()
     price = models.FloatField()
