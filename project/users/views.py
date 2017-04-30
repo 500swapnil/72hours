@@ -26,11 +26,26 @@ def thanks(request):
     return render(request, 'index.html', {'items': items})
 
 def category(request, category_name=None):
+    CHOICES= (
+    ('0','NULL'),
+    ('1','Cars and Bikes'),
+    ('2','Home and Decoration'),
+    ('3','Mobile and Tablets'),
+    ('4','Home appliances'),
+    ('5','Fashion'),
+    ('6','Books'),
+    ('7','Sports and Fitness'),
+    ('8','Laptops and PCs'),
+    ('9','Toys and Kids Accessories'),
+    )
+
+    name = CHOICES[int(category_name)][1]
+
     if category_name != 'index' and category_name:
-    	category.items = Item.objects.get(category = category_name)
+    	category.items = Item.objects.filter(category = category_name)
         category.name = category_name
 
-        return render(request, 'category.html', {'items':category.items})
+        return render(request, 'category.html', {'items':category.items, 'name':name})
 
 def item(request, item_id):
     Items = Item.objects.get(id = int(item_id))
