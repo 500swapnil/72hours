@@ -36,17 +36,17 @@
 					<div class="col-sm-6">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								<li><a href=""><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-								<li><a href=""><i class="fa fa-envelope"></i> info@domain.com</a></li>
+								<li><a href="/contact"><i class="fa fa-phone"></i> +91 123456789</a></li>
+								<li><a href="/contact"><i class="fa fa-envelope"></i> info@domain.com</a></li>
 								</ul>
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href=""><i class="fa fa-facebook"></i></a></li>
-								<li><a href=""><i class="fa fa-twitter"></i></a></li>
-								<li><a href=""><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="https://www.facebook.com/swapnil.gupta.7564"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="https://twitter.com/vivek__kaushal?lang=en"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="https://www.linkedin.com/in/mridul-nagpal-0663bb131/"><i class="fa fa-linkedin"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -59,14 +59,13 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="/thanks"><img src="{% static 'images/home/logo.png' %}" alt="" /></a>
+							<a href="/index"><img src="{% static 'images/home/logo.png' %}" alt="" /></a>
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="/signup"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>
 					</div>
@@ -78,26 +77,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-9">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href=/index">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
-                                    </ul>
-                                </li> 
+								<li><a href="/index">Home</a></li>
 								<li><a href="/contact">Contact</a></li>
 							</ul>
 						</div>
@@ -127,22 +109,22 @@
 						<div class="companyinfo">
                             <div class="col-sm-4">
 						      <div class="logo pull-left">
-							     <a href="index.html"><img src="{% static 'images/home/logo.png' %}" alt="" /></a>
+							     <a href="/index"><img src="{% static 'images/home/logo.png' %}" alt="" /></a>
 						      </div>
                             </div>
                             <br/><br/><br/>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
+							<p>Your No. 1 choice for buying or selling used items online!</p>
 						</div>
 					</div>
 					<div class="col-sm-2">
 						<div class="single-widget">
-							<h2>Quock Shop</h2>
+							<h2>Quick Shop</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="">T-Shirt</a></li>
-								<li><a href="">Mens</a></li>
-								<li><a href="">Womens</a></li>
-								<li><a href="">Gift Cards</a></li>
-								<li><a href="">Shoes</a></li>
+								<li><a href="/category/1">Cars and Bikes</a></li>
+								<li><a href="/category/5">Fashion</a></li>
+								<li><a href="/category/7">Sports and Fitness</a></li>
+								<li><a href="/category/3">Mobiles and Tablets</a></li>
+								<li><a href="/category/6">Books</a></li>
 							</ul>
 						</div>
 					</div>
@@ -150,11 +132,9 @@
 						<div class="single-widget">
 							<h2>Policies</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="">Terms of Use</a></li>
-								<li><a href="">Privecy Policy</a></li>
-								<li><a href="">Refund Policy</a></li>
-								<li><a href="">Billing System</a></li>
-								<li><a href="">Ticket System</a></li>
+								<li><a href="/contact">Terms of Use</a></li>
+								<li><a href="/contact">Privecy Policy</a></li>
+								<li><a href="/contact">Refund Policy</a></li>
 							</ul>
 						</div>
 					</div>
@@ -162,11 +142,9 @@
 						<div class="single-widget">
 							<h2>About Shopper</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="">Company Information</a></li>
-								<li><a href="">Careers</a></li>
-								<li><a href="">Store Location</a></li>
-								<li><a href="">Affillate Program</a></li>
-								<li><a href="">Copyright</a></li>
+								<li><a href="/contact">Company Information</a></li>
+								<li><a href="/contact">Careers</a></li>
+								<li><a href="/contact">Copyright</a></li>
 							</ul>
 						</div>
 					</div>
