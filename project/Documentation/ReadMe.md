@@ -16,3 +16,7 @@ which enables them to sell applications and also provides them the option to bro
 lines of quikr.com.
 
 * Features
+- Create User Account.
+- Create Ads for Items to Sell.
+- Browse through categories to see ads for items on sale.
+- 
