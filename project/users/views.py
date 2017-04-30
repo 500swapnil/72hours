@@ -7,6 +7,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from models import User, Item
 import datetime
+from django.http import HttpResponse
 
 
 def user_profile(request):
@@ -79,3 +80,18 @@ def selldone(request):
 def index(request):
     items = Item.objects.all()[0:6]
     return render(request, 'index.html', {'items': items})
+
+def search(request):
+    if request.method == 'POST':
+        items = []
+        name = "Search Results"
+        items_all = Item.objects.all()
+        search = request.POST.get('search')
+        for item in items_all:
+            if search in item.title or search in item.category or search in item.description:
+                items.append(item)
+        if items:
+            return render(request, 'category.html', {'items':items, 'name':name, 'error':""})    
+        else:
+            return render(request, 'category.html', {'items':items, 'name':name, 'error':"No search results"})    
+

@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^category/(?P<category_name>[\w-]*)/$', views.category, name='category'),
     url(r'^selldone',views.selldone, name="selldone"),
     url(r'^item/(?P<item_id>[\d-]*)/$',views.item, name='item'),
-    url(r'^index/',views.index,name='index')
+    url(r'^index/',views.index,name='index'),
+    url(r'^search',views.search, name='search'),
 ]
