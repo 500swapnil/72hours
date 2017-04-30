@@ -139,13 +139,14 @@
                         <!--features_items-->
                         <h2 class="title text-center">Category Name</h2>
                         {% for item in items %}
+                        hrlloo
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center">
                                         <img src="{% static 'images/home/product'%}{{ i }}.jpg" alt="" />
-                                        <h2>{% static 'images/home/product'%}{{ i }}.jpg </h2>
-                                        <p>{{i}}</p>
+                                        <h2>/static{{ item.image.url }} </h2>
+                                        <p>{{item.title}}</p>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
                                     <div class="product-overlay">
