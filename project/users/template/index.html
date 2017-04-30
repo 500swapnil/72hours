@@ -121,18 +121,6 @@
                     </div>
                     <!--/category-products-->
 
-
-
-                    <div class="price-range">
-                        <!--price-range-->
-                        <h2>Price Range</h2>
-                        <div class="well text-center">
-                            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="25000" data-slider-step="50" data-slider-value="[5000,25000]" id="sl2"><br />
-                            <b class="pull-left"> 	&#8377; 0</b> <b class="pull-right">	&#8377; 25000</b>
-                        </div>
-                    </div>
-                    <!--/price-range-->
-
                     <div class="shipping text-center">
                         <!--shipping-->
                         <img src="{% static 'images/home/shipping.jpg' %}" alt="" />
@@ -150,13 +138,12 @@
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img src="/static{{ item.image.url }}" alt="" class="img-responsive girl" style="height:200px; width:300px;" />
+                                    <a href="/item/{{ item.id }}"><img src="/static{{ item.image.url }}" alt="" class="img-responsive girl" style="height:200px; width:300px;" /></a>
                                     <h2>₹{{ item.price }} </h2>
                                     <p>{{ item.title}}</p>
                                     <a href="/item/{{ item.id }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>View Item</a>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     {% endfor %}
