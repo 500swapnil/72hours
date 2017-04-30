@@ -75,3 +75,7 @@ def selldone(request):
             return render(request, 'home.html')
         else:
             return render(request, 'selldone.html', {'show':form.errors})
+
+def index(request):
+    items = Item.objects.all()[0:6]
+    return render(request, 'index.html', {'items': items})
