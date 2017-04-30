@@ -21,7 +21,7 @@ def thanks(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
-            temp = User.create(form.cleaned_data.get('name'), form.cleaned_data.get('email'), form.cleaned_data.get('password'))
+            temp = User.create(form.cleaned_data.get('name'), form.cleaned_data.get('email'), form.cleaned_data.get('password'), form.cleaned_data.get('address'),form.cleaned_data.get('contact'))
             temp.save()
         items = Item.objects.all()[0:6]
     return render(request, 'index.html', {'items': items})

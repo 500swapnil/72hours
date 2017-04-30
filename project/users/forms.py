@@ -14,6 +14,13 @@ class UserForm(forms.Form):
     password = forms.CharField(label='', widget=forms.PasswordInput(
 	    	attrs={'placeholder': 'Password'}
 	    	))
+    contact = forms.IntegerField(label='',widget=forms.TextInput(
+            attrs={'placeholder':'Contact Number'}
+            )) 
+    address = forms.CharField(label='', widget = forms.TextInput(
+            attrs={'placeholder': 'Address'}
+            ))
+
 
 class SellerForm(forms.Form):
 
