@@ -35,7 +35,6 @@ def contact(request):
     return render(request, 'contact-us.html')
 
 def sell(request):
-    form = SellerForm()
     return render(request, 'sell.html', {'form':form})
 # def login(request):
 # 	if request.method == 'POST':
@@ -45,8 +44,9 @@ def sell(request):
 
 def selldone(request):
     if request.method == 'POST':
-        form = SellerForm(request.POST)
+        form = SellerForm(request.POST, request.FILES)
         temp = User.create("Mridul", "msdvhosd", "saiuga")
+        
         temp.save()
         if form.is_valid():
             temp2 = Item.create(form.cleaned_data.get('name'),datetime.datetime.now,temp,form.cleaned_data.get('description'), form.cleaned_data.get('price'),form.cleaned_data.get('image'),form.cleaned_data.get('quantity'),form.cleaned_data.get('category'))

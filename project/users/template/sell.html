@@ -154,15 +154,15 @@
                     <div class="contact-form">
                         <!--<h2 class="title text-center">Get In Touch</h2>-->
                         <div class="status alert alert-success" style="display: none"></div>
-                        <form id="main-contact-form" class="contact-form row" name="contact-form" method="POST" action="/selldone/" enctype="multipart/form-data">
+                        <form id="main-contact-form" class="contact-form row" name="contact-form" method="POST" action="/selldone">
                         {% csrf_token %}
+                        {{form.as_p}}
                             <div class="form-group col-md-4">
                                 <label for="name"><font size="+2" face="roboto" color="#8c8c88">Enter Product Name:</font></label>
-
                             </div>
 
                             <div class="form-group col-md-8">
-                                {{form.name}}
+                                <input type="text" id="title" name="title" class="form-control" required="required" placeholder="Name">
                             </div>
                             <br />
 
@@ -171,7 +171,7 @@
                             </div>
 
                             <div class="form-group col-md-8">
-                                {{form.price}}
+                                <input type="text" id="price" name="price" class="form-control" required="required" placeholder="Enter Price (In Rupees)">
                             </div>
 
                             <br />
@@ -180,7 +180,7 @@
                             </div>
 
                             <div class="form-group col-md-8">
-                                {{form.quantity}}
+                                <input type="text" id="quantity" name="quantity" class="form-control" required="required" placeholder="Enter Quantity">
                             </div>
 
                             <br />
@@ -189,8 +189,8 @@
                             </div>
 
                             <div class="form-group col-md-8">
-                                <!-- {{form.image}} -->
-                                <!-- <input type="file" name="image" class='form-control'> -->
+                                <input type="file" id="image" name="image" class="form-control" required="required" placeholder="Choose Image to Upload">
+
                             </div>
 
                             <br />
@@ -201,19 +201,29 @@
                             </div>
 
                             <div class="form-group col-md-8">
-                                {{form.description}}
+                                <textarea name="description" id="description" required="required" class="form-control" rows="8" placeholder="Enter Product Description"></textarea>
                             </div>
                             <br />
                             <div class="form-group col-md-4">
                                 <label for="category"><font size="+2" face="roboto" color="#8c8c88">Choose Category:</font></label>
                             </div>
+
                             <div class="form-group col-md-8">
-                            {{form.category}}
+                                <select id="category" name="category" required>
+                                    <option id= "vehicles"> Cars and Bikes </option>
+                                    <option id= "furniture"> Home and Decoration </option>
+                                    <option id= "moblies"> Mobiles and Tablets</option>
+                                    <option id= "appliances"> Home Appliances</option>
+                                    <option id= "fashion"> Fashion </option>
+                                    <option id= "books"> Books</option>
+                                    <option id= "sport"> Sport And Fitness</option>
+                                    <option id= "laptop"> Laptops and PCs</option>
+                                    <option id= "toys"> Toys and Kids' Accessories </option>
                             </div>
 
                             <br />
                             <div class="form-group col-md-12 ">
-                                <button type="submit " name="submit " class="btn btn-primary pull-right" value="Submit">Post Ad</button>
+                                <button type="submit " name="submit" class="btn btn-primary pull-right" value="submit"></button>
                             </div>
                         </form>
                     </div>

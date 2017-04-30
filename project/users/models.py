@@ -17,15 +17,29 @@ class User (models.Model):
         return user
 
 class Item (models.Model):
+
+    CHOICES= (
+    ('1','Cars and Bikes'),
+    ('2','Home and Decoration'),
+    ('3','Mobile and Tablets'),
+    ('4','Home appliances'),
+    ('5','Fashion'),
+    ('6','Books'),
+    ('7','Sports and Fitness'),
+    ('8','Laptops and PCs'),
+    ('9','Toys and Kids Accessories'),
+    )    
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255)
     date = models.DateField(auto_now=True)
     seller_id = models.ForeignKey(User)
     description = models.TextField()
     price = models.FloatField()
-    image = models.ImageField(max_length=255)
+    image = models.ImageField(upload_to='./users/static/')
     quantity = models.IntegerField()
-    category = models.CharField(max_length=100)
+    category = models.CharField(max_length=40,
+        choices=CHOICES
+        )
 
     @classmethod
     def create(cls, title, date, seller_id, description, price, image, quantity, category):
