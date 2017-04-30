@@ -1,7 +1,34 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.db import models
+
+import ast
+
+class ListField(models.TextField):
+    __metaclass__ = models.SubfieldBase
+    description = "Stores a python list"
+
+    def __init__(self, *args, **kwargs):
+        super(ListField, self).__init__(*args, **kwargs)
+
+    def to_python(self, value):
+        if not value:
+            value = []
+
+        if isinstance(value, list):
+            return value
+
+        return ast.literal_eval(value)
+
+    def get_prep_value(self, value):
+        if value is None:
+            return value
+
+        return unicode(value)
+
+    def value_to_string(self, obj):
+        value = self._get_val_from_obj(obj)
+        return self.get_db_prep_value(value)
 
 class User (models.Model):
     id = models.AutoField(primary_key=True)
@@ -40,10 +67,11 @@ class Item (models.Model):
     category = models.CharField(max_length=40,
         choices=CHOICES
         )
+    test_list = ListField()
 
     @classmethod
     def create(cls, title, date, seller_id, description, price, image, quantity, category):
-        item = cls(title=title, date=date, seller_id=seller_id, description=description, price=price, image=image, quantity=quantity, category=category)
+        item = cls(title=title, date=date, seller_id=seller_id, description=description, price=price, image=image, quantity=quantity, category=category, test_list=[])
         return item
         
 class Transaction (models.Model) :
