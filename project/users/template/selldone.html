@@ -1,2 +1,21 @@
-hello world
-{{show}}
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+<section>
+      <div class="container">
+		<div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+            <img src="{% static 'images/home/thanks.png' %}" style="width: auto ; height:200px "/>
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2 thanks">
+            Thank you for {{ thanking }}. {{ success }} successfully. <a href="/thanks">Click here</a> to go to home page.
+          </div>
+        </div>
+        <br/>
+        <br/>
+      </div>
+</section>
+{% endblock %}

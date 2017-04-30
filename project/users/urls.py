@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^contact', views.contact, name="contact"),
     url(r'^sell$', views.sell, name="sell"),
     url(r'^category/(?P<category_name>[\w-]*)/$', views.category, name='category'),
-    url(r'^selldone',views.selldone, name="selldone")
+    url(r'^selldone',views.selldone, name="selldone"),
+    url(r'^item/(?P<item_id>[\d-]*)/$',views.item, name='item'),
 ]

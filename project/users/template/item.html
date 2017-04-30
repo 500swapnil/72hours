@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 {% block main %}
-	
 	<section>
 		<div class="container">
 			<div class="row">
@@ -162,23 +161,11 @@
 						</div>
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
-								<h2>Anne Klein Sleeveless Colorblock Scuba</h2>
-								<img src="images/product-details/rating.png" alt="" />
-								<p>Web ID: 1089772</p>
+								<h2>{{ item.title }}</h2>
+								<img src="/static{{ item.image.url }}" alt="" />
+								<p>Item ID: #{{ item.id }}</p>
 								<span>
-									<span>US $59</span>
-									<label>Quantity:</label>
-									<input type="text" value="1" />
-                                  <div class="row">
-									<button type="button" class="btn btn-fefault cart">
-										<i class="fa fa-shopping-cart"></i>
-										Add to cart
-									</button>
-                                  <!--<button type="button" class="btn btn-fefault cart">
-										<i class="fa fa-shopping-cart"></i>
-										Buy Now
-									</button>-->
-                                    </div>
+									<span>₹{{ item.price }}</span>
                                     <div class="row">
                                     <button type="button" class="btn btn-fefault cart">
 										<i class="fa fa-phone"></i>
@@ -186,7 +173,8 @@
 									</button>
                                     </div>
 								</span>
-								<p><b>Availability:</b> 2</p>
+								<p><b>Availability:</b> {{ item.quantity }}</p>
+                                <p><b>Date Added:</b> {{ item.date }}</p>
 							</div><!--/product-information-->
 						</div>
 					</div><!--/product-details-->
@@ -234,14 +222,14 @@
                               <div class="blog-post-area">
                                  <div class="row">
                                     <div class="single-blog-post col-sm-6">
-                                        <h5>Contact: +91 1234567890</h5>
-                                        <h5>user@example.com</h5>
-                                        <h5>Address: 25th street, IIIT Hyderabad</h5>
+                                        <h5>Contact: {{ seller.number }}</h5>
+                                        <h5>Email: {{ seller.email }}</h5>
+                                        <h5>Address: {{ seller.address }}</h5>
                                     </div>
                                   </div>
                                     <div>
                                         <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p> <br>
+                                            {{ item.description }}</p> <br>
                                     </div>
                               </div>	
                             </div>
@@ -251,9 +239,10 @@
                               <div class="blog-post-area">
                                  <div class="row">
                                     <div class="single-blog-post col-sm-6">
-                                        <h1>Name</h1>
-                                        <h5>+91 1234567890</h5>
-                                        <h5>user@example.com</h5>
+                                        <h1>{{ seller.name }}</h1>
+                                        <h5>Contact: {{ seller.number }}</h5>
+                                        <h5>Email: {{ seller.email }}</h5>
+                                        <h5>Address: {{ seller.address }}</h5>
                                     </div>
                                   </div>
                                     <div>

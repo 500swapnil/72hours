@@ -31,6 +31,15 @@ def category(request, category_name=None):
     else:
     	return render(request, 'category.html')
 
+def item(request, item_id):
+    Items = Item.objects.all()
+    for i in Items:
+        if i.id == int(item_id):
+	    break
+    obj = i
+    seller = obj.seller_id
+    return render(request, 'item.html', {'item': obj, 'seller': seller})
+
 def contact(request):
     return render(request, 'contact-us.html')
 

@@ -44,5 +44,4 @@ class Transaction (models.Model) :
     item = models.ForeignKey(Item)
     amount = models.IntegerField()
     payment_mode = models.CharField(max_length=15, choices = PAYMENT_MODES)
-    quantity = models.IntegerField()
     time = models.DateTimeField()
