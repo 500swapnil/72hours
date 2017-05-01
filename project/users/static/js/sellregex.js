@@ -1,5 +1,3 @@
-console.log("This is working");
-
 function regex() {
     var title = document.getElementById('title').value;
     console.log(title);

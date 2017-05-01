@@ -2,10 +2,12 @@
 from __future__ import unicode_literals
 from django.shortcuts import render
 from . import models
+
+
 from .forms import UserForm, SellerForm
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from models import User, Item
+from .models import User, Item
 import datetime
 from django.http import HttpResponse
 
@@ -21,7 +23,7 @@ def thanks(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
-            temp = User.create(form.cleaned_data.get('name'), form.cleaned_data.get('email'), form.cleaned_data.get('password'))
+            temp = User.create(form.cleaned_data.get('name'), form.cleaned_data.get('email'), form.cleaned_data.get('password'), form.cleaned_data.get('address'),form.cleaned_data.get('contact'))
             temp.save()
         items = Item.objects.all()[0:6]
     return render(request, 'index.html', {'items': items})
@@ -43,7 +45,7 @@ def category(request, category_name=None):
     name = CHOICES[int(category_name)][1]
 
     if category_name != 'index' and category_name:
-    	category.items = Item.objects.filter(category = category_name)
+        category.items = Item.objects.filter(category = category_name)
         category.name = category_name
 
         return render(request, 'category.html', {'items':category.items, 'name':name})
@@ -82,6 +84,7 @@ def index(request):
     return render(request, 'index.html', {'items': items})
 
 def search(request):
+    items = []
     if request.method == 'POST':
         name = "Search Results"
         items_all = Item.objects.all()
