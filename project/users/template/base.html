@@ -26,13 +26,6 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'images/ico/apple-touch-icon-114-precomposed.png' %}">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'images/ico/apple-touch-icon-72-precomposed.png' %}">
     <link rel="apple-touch-icon-precomposed" href="{% static 'images/ico/apple-touch-icon-57-precomposed.png' %}">
-    <script>
-     {% if messages %}
-                {% for message in messages %}
-                    alert(message);
-                {% endfor %}
-            {% endif %}
-            </script>
 </head>
 <!--/head-->
 
@@ -74,7 +67,7 @@
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
                                 {% if request.session.name %}
-                                  <li><a href="#">Welcome {{ request.session.name }}</a></li>
+                                  <li><a href="#">Welcome {{ request.session.name }}!</a></li>
                                   <li><a href="/logout">Logout</a></li>
                                 {% else %}
 								  <li><i class="fa fa-lock"></i><a href="/signup"> Login / Signup</a></li>
@@ -162,17 +155,6 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3 col-sm-offset-1">
-						<div class="single-widget">
-							<h2>About Shopper</h2>
-							<form action="#" class="searchform">
-								<input type="text" placeholder="Your email address" />
-								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-								<p>Get the most recent updates from <br />our site and be updated your self...</p>
-							</form>
-						</div>
-					</div>
-					
 				</div>
 			</div>
 		</div>
