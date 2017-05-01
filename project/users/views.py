@@ -82,7 +82,7 @@ def login_view(request):
         else:
             return HttpResponse(form.errors)
     else:
-        return HttpResponse("YOLO")    
+        return HttpResponse("Not POST")    
         
 
 def selldone(request):
