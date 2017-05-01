@@ -65,8 +65,13 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="/signup"><i class="fa fa-lock"></i> Login</a></li>
-							</ul>
+                                {% if request.session.name %}
+                                  <li><i class="fa fa-user">Welcome {{ request.session.name }}</li>
+                                  <li><a href="/logout">Logout</a></li>
+                                {% else %}
+								  <li><i class="fa fa-lock"></i><a href="/signup"> Login / Signup</a></li>
+                                {% endif % }
+                          </ul>
 						</div>
 					</div>
 				</div>

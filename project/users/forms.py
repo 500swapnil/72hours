@@ -15,8 +15,16 @@ class UserForm(forms.Form):
 	    	attrs={'placeholder': 'Password'}
 	    	))
 
+class LoginForm(forms.Form):
+    email = forms.EmailField(max_length=100, label='', 
+    		widget=forms.TextInput(
+            attrs={'placeholder': 'Email Address'}
+        	))
+    password = forms.CharField(label='', widget=forms.PasswordInput(
+	    	attrs={'placeholder': 'Password'}
+	    	))
+            
 class SellerForm(forms.Form):
-
     class Meta(ModelForm):
         model = Item
         fields = ['title','description','price','image','quantity','category']
