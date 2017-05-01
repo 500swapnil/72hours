@@ -86,8 +86,7 @@ def login_view(request):
         
 
 def selldone(request):
-    message = "Thank You for posting the ad"
-    return render(request, 'thankyou.html', {'message':message})
+    return render(request, 'selldone.html')
 
 def signed(request):
     message = "Thank You for signing up"
