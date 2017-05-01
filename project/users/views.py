@@ -68,12 +68,22 @@ def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():    
-            user = form.login(request)
+            user = User.objects.get(email=form.cleaned_data.get("email"))
             if user:
-                login(request, user)
-                return render(request, 'index.html', {'items': items})
-        login = UserForm()
-        return render(request, 'login.html', {'form': login, 'login': form})
+                if user.password == form.cleaned_data.get("password"):
+                    request.session['name'] = user.name
+                    items = Item.objects.all()[0:6]
+                    return render(request, 'index.html', {'items': items})
+         
+                else:
+                    return HttpResponse("Wrong Password")
+            else:
+                return HttpResponse("No user exist")
+        else:
+            return HttpResponse(form.errors)
+    else:
+        return HttpResponse("YOLO")    
+        
 
 def selldone(request):
     message = "Thank You for posting the ad"
