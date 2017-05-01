@@ -22,8 +22,25 @@ class UserForm(forms.Form):
             ))
 
 
-class SellerForm(forms.Form):
+class LoginForm(forms.Form):
+    email = forms.EmailField(max_length=100, label='', 
+    		widget=forms.TextInput(
+            attrs={'placeholder': 'Email Address'}
+        	))
+    password = forms.CharField(label='', widget=forms.PasswordInput(
+	    	attrs={'placeholder': 'Password'}
+	    	))
 
+    def login(self,request):
+        if request.method == 'POST':
+            if self.is_valid():
+                user = authenticate(email=self.cleaned_data.get('email'), password=self.cleaned_data.get('password'))
+                if user:
+                    return user
+            raise forms.ValidationError("Sorry, that login was invalid. Please try again.")
+            return user
+            
+class SellerForm(forms.Form):
     class Meta(ModelForm):
         model = Item
         fields = ['title','description','price','image','quantity','category']
