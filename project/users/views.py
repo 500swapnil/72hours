@@ -2,13 +2,10 @@
 from __future__ import unicode_literals
 from django.shortcuts import render
 from . import models
-<<<<<<< HEAD
 from .forms import UserForm, SellerForm, LoginForm
-=======
 
 
 from .forms import UserForm, SellerForm
->>>>>>> 9550dc29fbedf0685f97581ef3ebe7a6da27a8bb
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import User, Item
