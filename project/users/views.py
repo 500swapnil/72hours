@@ -67,17 +67,12 @@ def sell(request):
 # 			temp = User.objects.filter(name=form.cleaned_data.get('name'))
 
 def selldone(request):
-    if request.method == 'POST':
-        form = SellerForm(request.POST, request.FILES)
-        temp = User.create("Mridul", "msdvhosd", "saiuga")
+    message = "Thank You for posting the ad"
+    return render(request, 'thankyou.html', {'message':message})
 
-        temp.save()
-        if form.is_valid():
-            temp2 = Item.create(form.cleaned_data.get('name'),datetime.datetime.now,temp,form.cleaned_data.get('description'), form.cleaned_data.get('price'),form.cleaned_data.get('image'),form.cleaned_data.get('quantity'),form.cleaned_data.get('category'))
-            temp2.save()
-            return render(request, 'home.html')
-        else:
-            return render(request, 'selldone.html', {'show':form.errors})
+def signed(request):
+    message = "Thank You for signing up"
+    return render(request, 'thankyou.html', {'message':message})
 
 def index(request):
     items = Item.objects.all()[0:6]
