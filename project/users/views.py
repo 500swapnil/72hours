@@ -84,6 +84,7 @@ def index(request):
     return render(request, 'index.html', {'items': items})
 
 def search(request):
+    items = []
     if request.method == 'POST':
         name = "Search Results"
         items_all = Item.objects.all()
