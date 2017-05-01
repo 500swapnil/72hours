@@ -2,10 +2,16 @@
 from __future__ import unicode_literals
 from django.shortcuts import render
 from . import models
+<<<<<<< HEAD
 from .forms import UserForm, SellerForm, LoginForm
+=======
+
+
+from .forms import UserForm, SellerForm
+>>>>>>> 9550dc29fbedf0685f97581ef3ebe7a6da27a8bb
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from models import User, Item
+from .models import User, Item
 import datetime
 from django.http import HttpResponse
 
@@ -45,7 +51,7 @@ def category(request, category_name=None):
     name = CHOICES[int(category_name)][1]
 
     if category_name != 'index' and category_name:
-    	category.items = Item.objects.filter(category = category_name)
+        category.items = Item.objects.filter(category = category_name)
         category.name = category_name
 
         return render(request, 'category.html', {'items':category.items, 'name':name})
@@ -95,6 +101,7 @@ def logout(request):
     return render(request, 'index.html', {'items': items})
 
 def search(request):
+    items = []
     if request.method == 'POST':
         name = "Search Results"
         items_all = Item.objects.all()
