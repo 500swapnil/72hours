@@ -12,5 +12,7 @@ urlpatterns = [
     url(r'^item/(?P<item_id>[\d-]*)/$',views.item, name='item'),
     url(r'^index/',views.index,name='index'),
     url(r'^search',views.search, name='search'),
-    url(r'^signed',views.signed, name='signed')
+    url(r'^signed',views.signed, name='signed'),
+    url(r'^logout',views.logout, name='logout'),
+    url(r'^login',views.login_view, name='login_view'),
 ]

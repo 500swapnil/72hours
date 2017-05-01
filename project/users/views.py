@@ -2,9 +2,13 @@
 from __future__ import unicode_literals
 from django.shortcuts import render
 from . import models
+<<<<<<< HEAD
+from .forms import UserForm, SellerForm, LoginForm
+=======
 
 
 from .forms import UserForm, SellerForm
+>>>>>>> 9550dc29fbedf0685f97581ef3ebe7a6da27a8bb
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import User, Item
@@ -17,7 +21,8 @@ def user_profile(request):
 
 def signup(request):
     form = UserForm()
-    return render(request, 'login.html', {'form': form})
+    login = LoginForm()
+    return render(request, 'login.html', {'form': form, 'login': login})
 
 def thanks(request):
     if request.method == 'POST':
@@ -26,6 +31,7 @@ def thanks(request):
             temp = User.create(form.cleaned_data.get('name'), form.cleaned_data.get('email'), form.cleaned_data.get('password'), form.cleaned_data.get('address'),form.cleaned_data.get('contact'))
             temp.save()
         items = Item.objects.all()[0:6]
+        request.session['name'] = form.cleaned_data.get('name')
     return render(request, 'index.html', {'items': items})
 
 def category(request, category_name=None):
@@ -60,11 +66,17 @@ def contact(request):
 
 def sell(request):
     return render(request, 'sell.html')
-# def login(request):
-# 	if request.method == 'POST':
-# 		form = UserForm(request.POST)
-# 		if form.is_valid():
-# 			temp = User.objects.filter(name=form.cleaned_data.get('name'))
+
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():    
+            user = form.login(request)
+            if user:
+                login(request, user)
+                return render(request, 'index.html', {'items': items})
+        login = UserForm()
+        return render(request, 'login.html', {'form': login, 'login': form})
 
 def selldone(request):
     message = "Thank You for posting the ad"
@@ -75,6 +87,11 @@ def signed(request):
     return render(request, 'thankyou.html', {'message':message})
 
 def index(request):
+    items = Item.objects.all()[0:6]
+    return render(request, 'index.html', {'items': items})
+
+def logout(request):
+    del request.session['name']
     items = Item.objects.all()[0:6]
     return render(request, 'index.html', {'items': items})
 
