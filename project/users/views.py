@@ -22,7 +22,7 @@ def thanks(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
-            temp = User.create(form.cleaned_data.get('name'), form.cleaned_data.get('email'), form.cleaned_data.get('password'))
+            temp = User.create(form.cleaned_data.get('name'), form.cleaned_data.get('email'), form.cleaned_data.get('password'), form.cleaned_data.get('address'),form.cleaned_data.get('contact'))
             temp.save()
         items = Item.objects.all()[0:6]
         request.session['name'] = form.cleaned_data.get('name')
@@ -61,15 +61,16 @@ def contact(request):
 def sell(request):
     return render(request, 'sell.html')
 
-def login(request):
+def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
-        if form.is_valid():
-            temp = User.objects.filter(email=form.cleaned_data.get('email'))
-            #if temp.password == form.cleaned_data.get('password'):
-            items = Item.objects.all()[0:6]
-            request.session['name'] = temp.name
-            return render(request, 'index.html', {'items': items})
+        if form.is_valid():    
+            user = form.login(request)
+            if user:
+                login(request, user)
+                return render(request, 'index.html', {'items': items})
+        login = UserForm()
+        return render(request, 'login.html', {'form': login, 'login': form})
 
 def selldone(request):
     if request.method == 'POST':
@@ -88,17 +89,20 @@ def index(request):
     items = Item.objects.all()[0:6]
     return render(request, 'index.html', {'items': items})
 
+def logout(request):
+    del request.session['name']
+    items = Item.objects.all()[0:6]
+    return render(request, 'index.html', {'items': items})
+
 def search(request):
     if request.method == 'POST':
-        items = []
         name = "Search Results"
         items_all = Item.objects.all()
         search = request.POST.get('search')
         for item in items_all:
-            if search in item.title or search in item.category or search in item.description:
+            if search in item.title:
                 items.append(item)
         if items:
             return render(request, 'category.html', {'items':items, 'name':name, 'error':""})    
         else:
-            return render(request, 'category.html', {'items':items, 'name':name, 'error':"No search results"})    
-
+            return render(request, 'category.html', {'items':items, 'name':name, 'error':"No search results"})
